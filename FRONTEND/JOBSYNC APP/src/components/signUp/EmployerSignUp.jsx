@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import coverimage2 from "../../assets/coverimage2.jpg"; // Import the background image
 
 const EmployerSignUp = () => {
     const [formData, setFormData] = useState({
@@ -52,8 +53,14 @@ const EmployerSignUp = () => {
     };
 
     return (
-        <div className="w-full h-screen flex items-center justify-center bg-gray-200">
-            <div className="bg-white p-10 rounded-lg shadow-lg max-w-md w-full">
+        <div
+            className="w-full min-h-screen flex items-center justify-center bg-cover bg-center relative"
+            style={{ backgroundImage: `url(${coverimage2})` }} // Set the background image
+        >
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-black opacity-50"></div>
+
+            <div className="bg-white p-10 rounded-lg shadow-lg max-w-md w-full z-10">
                 <h2 className="text-3xl font-bold text-center mb-5">Employer Sign Up</h2>
 
                 {error && <p className="text-red-500 text-sm text-center">{error}</p>}
@@ -139,7 +146,7 @@ const EmployerSignUp = () => {
                         onChange={handleChange}
                         className="w-full py-2 my-4 bg-transparent border-b border-black outline-none"
                     />
-                    <button type="submit" className="w-full py-3 bg-green-500 text-white rounded-md">
+                    <button type="submit" className="w-full py-3 bg-orange-950 text-white rounded-md">
                         Sign Up as Employer
                     </button>
                 </form>

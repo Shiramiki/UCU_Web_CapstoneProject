@@ -152,7 +152,7 @@ const JobSeekerSignUp = () => {
                         onChange={handleChange}
                         className="w-full py-2 my-4 bg-transparent border-b border-black outline-none"
                     />
-                    <button type="submit" className="w-full py-3 bg-blue-500 text-white rounded-md">
+                    <button type="submit" className="w-full py-3 bg-orange-950 text-white rounded-md">
                         Sign Up as Job Seeker
                     </button>
                 </form>
