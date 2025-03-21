@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import coverimage from '../assets/coverimage.jpg';  // Update path accordingly
+import coverimage from '../assets/coverimage.jpg'; 
+import coverimage2 from '../assets/coverimage2.jpg';  
 
 const LandingPage = () => {
     return (
         <div>
             {/* Header Section */}
-            <header className="absolute w-full flex justify-between items-center p-6 text-white z-20">
+            <header className="fixed top-0 left-0 w-full flex justify-between items-center p-6 text-white z-20 bg-black bg-opacity-70">
                 <div className="text-4xl font-extrabold">
-                    
                     <span className="font-serif">JOB SYNC</span>
                 </div>
                 <nav className="space-x-10">
@@ -21,25 +21,22 @@ const LandingPage = () => {
             </header>
 
             {/* Hero Section */}
-            <div className="relative w-full h-[600px]">
-                <img
-                    src={coverimage.jpg} // Update path accordingly
-                    alt="Background Image"
-                    className="w-full h-full object-cover absolute"
-                />
+            <div 
+                className="relative w-full h-[600px] bg-cover bg-center"
+                style={{ backgroundImage: `url(${coverimage2})` }}
+            >
                 <div className="absolute w-full h-full top-0 left-0 flex items-center justify-center bg-black/70">
                     <div className="text-center text-white font-extrabold z-20">
                         <p className="w-full bg-[#4071ed] h-2 mb-5"></p>
-                        <p className="text-[40px] pb-10 overflow-auto">It's enough with the job hunt struggles, we're here to help. Land your next role with JobFern!</p>
-                        <button className="font-medium bg-[#4071ed] text-white rounded-md p-4 hover:bg-white hover:text-[#4071ed] transition duration-500">
-                            Signup Now!
-                        </button>
+                        <p className="text-[40px] pb-10 overflow-auto">
+                            It's enough with the job hunt struggles, we're here to help. Land your next role with JobFern!
+                        </p>
                     </div>
                 </div>
             </div>
 
             {/* Hero Section with Cover Image */}
-            <header className="relative w-full h-screen flex flex-col items-center justify-center">
+            <header className="relative w-full h-screen flex flex-col items-center justify-center bg-[#3E2723]">
                 <img src={coverimage} alt="Cover" className="absolute w-full h-full object-cover brightness-50" />
                 <motion.div
                     className="z-10 text-center text-white"
@@ -50,7 +47,7 @@ const LandingPage = () => {
                     <h1 className="text-5xl font-extrabold mb-4">Find Your Dream Job</h1>
                     <p className="text-lg mb-6">Apply today and get offers from top companies</p>
                     <motion.div
-                        className="flex bg-white text-black p-2 rounded-lg shadow-md"
+                        className="flex bg-white text-black p-2 rounded-lg shadow-md w-full max-w-lg mx-auto"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5 }}
@@ -58,22 +55,12 @@ const LandingPage = () => {
                         <input
                             type="text"
                             placeholder="Search for jobs..."
-                            className="px-4 py-2 outline-none max-w-sm rounded-l-lg"
+                            className="px-4 py-2 outline-none w-full rounded-l-lg"
                         />
-                        <button className="bg-blue-600 text-white px-6 py-2 rounded-r-lg hover:bg-blue-700 transition">
+                        <button className="bg-orange-950 text-white px-5 py-2 rounded-r-lg hover:bg-blue-700 transition ml-auto">
                             Search
                         </button>
                     </motion.div>
-                    <Link to="/login">
-                        <motion.button
-                            className="mt-4 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition"
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 1.5 }}
-                        >
-                            Login
-                        </motion.button>
-                    </Link>
                 </motion.div>
             </header>
 
@@ -165,16 +152,6 @@ const LandingPage = () => {
                 >
                     Sign up now and land your next big opportunity.
                 </motion.p>
-                <Link to="/register">
-                    <motion.button
-                        className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1.5 }}
-                    >
-                        Get Started
-                    </motion.button>
-                </Link>
             </section>
         </div>
     );
