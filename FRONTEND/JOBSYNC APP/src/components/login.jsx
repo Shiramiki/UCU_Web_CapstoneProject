@@ -1,100 +1,69 @@
 import React from 'react';
-import coverimage from '../assets/coverimage.jpg';
-import google_icon from '../assets/googleicon.png'; // Fixed import statement
-
-// Define colors (optional, if you plan to use them)
-const colors = {
-    primary: "#060606",
-    background: "#E0E0E0",
-    disabled: "#D9D9D9"
-};
+import { useNavigate } from 'react-router-dom';  // Import useNavigate
+import google_icon from '../assets/googleicon.png';
 
 const Login = () => {
+    const navigate = useNavigate(); // Initialize navigation
+
     return (
-        <div className="w-full h-screen flex items-start">
-            
-            <div className="relative w-1/2 h-full flex flex-col">
-            <div className='absolute top-[5%] left-[10&] flex flex-col'>
-                <h1 className='text-5xl text-white font-extrabold my-4'>Finding Jobs Made Easy</h1>
-                <p className='text-base text-white font-extrabold'>Just apply and get upstanding offers from the community</p>
-
-            </div>
-                <img
-                    src={coverimage}
-                    
-                    className="w-full h-full object-cover " // Ensures the image covers the container
-                />
-            </div>
-            <div className='w-1/2 h-full bg-[#f5f5f5] flex flex-col p-20 justify-between items-center'>
-            
-
-            <div className='w-full flex flex-col max-w-[400px]'>
-                <div className='w-full flex flex-col mb-5'>
-                    <h2 className='text-3xl font-bold'>Login</h2>
-               
-                <p className='text-base nb-2'>Welcome Back! Please enter your details.</p>
-                </div>
+        <div className="w-full h-screen flex items-center justify-center bg-gray-200">
+            <div className="bg-white p-10 rounded-lg shadow-lg max-w-md w-full">
+                <h2 className="text-3xl font-bold text-center mb-5">Login</h2>
+                <p className="text-base text-center mb-5">Welcome Back! Please enter your details.</p>
 
                 <div className="w-full flex flex-col">
-    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-        
-    </label>
-    <input
-        type="email"
-        id="email"
-        placeholder="Enter your email"
-        className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:border-blue-500 transition duration-200"
-    />
+                    <input
+                        type="email"
+                        placeholder="Enter your email"
+                        className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none focus:border-blue-500 transition duration-200"
+                    />
+                    <input
+                        type="password"
+                        placeholder="Enter your password"
+                        className="w-full text-black py-2 my-4 bg-transparent border-b border-black outline-none focus:border-blue-500 transition duration-200"
+                    />
+                </div>
 
-<input
-        type="password"
-        id="Password"
-        placeholder="Enter your password"
-        className="w-full text-black py-2 my-4 bg-transparent border-b border-black outline-none focus:border-blue-500 transition duration-200"
-    />
+                <div className='w-full flex items-center justify-between mb-4'>
+                    <div className='flex items-center'>
+                        <input type="checkbox" className="w-4 h-4 mr-2"/>
+                        <p className='text-sm'>Remember me</p>
+                    </div>
+                    <p className="text-sm font-medium cursor-pointer underline">Forgot Password?</p>
+                </div>
 
+                <button className='w-full text-white font-semibold bg-black rounded-md p-3 text-center'>
+                    Log in
+                </button>
 
-</div>
+                {/* Sign Up button navigates to SignUp page */}
+                <button 
+                    onClick={() => navigate("/signup")}
+                    className='w-full text-black font-semibold bg-white border border-black rounded-md p-3 text-center mt-3'
+                >
+                    Sign Up
+                </button>
 
-<div className='w-full flex items-center justify-between'>
-    <div className='w-full flex items-center'>
-        <input type="checkbox" className="w-4 h-4 mr-2"/>
-        <p className='text-sm'>Remember me</p>
-    </div>
+                <div className='w-full flex items-center justify-center relative py-4'>
+                    <div className='w-full h-[1px] bg-gray-400'></div>
+                    <p className='absolute bg-white px-2 text-gray-600'>or</p>
+                </div>
 
-    <p className="text-sm font-medium whitespace-nowrap cursor-pointer underline underline-offset-2">Forgot Password</p>
-</div>
-    <div className='w-full flex flex-col my-4'>
-        <button className='w-full text-white my-2 font-semibold bg-[#060606] rounded-md p-4 text-center flex items-center justify-center cursor-pointer'>
-            Log in
-        </button>
+                <button className='w-full text-black font-semibold bg-white border border-gray-400 rounded-md p-3 flex items-center justify-center'>
+                    <img src={google_icon} className='h-6 mr-2' alt="Google Icon"/>
+                    Sign In With Google
+                </button>
 
-        <button className='w-full text-[#060606] my-2 font-semibold bg-white border border-black rounded-md p-4 text-center flex items-center justify-center cursor-pointer'>
-            Sign Up
-        </button>
-
-    </div>
-
-<div className='w-full flex items-center justify-center relative py-2'>
-    <div classname='w-full h-1 bg-black/40'></div>
-    <p className=' text-lg absolute text-black/80 bg-[#f5f5f5]'>or</p>
-
-</div>
-
-<button className='w-full text-[#060606] my-2 font-semibold bg-white border border-black/40 rounded-md p-4 text-center flex items-center justify-center cursor-pointer'>
-    <img src={google_icon} className='h-6 mr-2'/>
-            Sign In With Google
-        </button>
-
-
-                <div className='w-full flex items-center justify-center'>
-                    <p className='text-sm font-normal text-[#060606]'>Don't have an account?<span className='font-semibold underline underline-offset-2 cursor-pointer'>Sign up for free</span></p> 
+                <div className='text-center mt-4'>
+                    <p className='text-sm'>Don't have an account? 
+                        <span 
+                            onClick={() => navigate("/signup")}
+                            className='font-semibold underline cursor-pointer'
+                        > Sign up for free</span>
+                    </p> 
                 </div>
             </div>
-            </div>
-            </div>
-
-       
+        </div>
     );
 };
 
