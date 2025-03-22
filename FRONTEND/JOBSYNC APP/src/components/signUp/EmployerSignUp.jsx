@@ -48,7 +48,17 @@ const EmployerSignUp = () => {
                 confirmPassword: "",
             });
         } catch (error) {
-            setError("Error occurred during registration.");
+            console.error("Registration Error:", error);
+            if (error.response) {
+                // The request was made, and the server responded with a status code
+                setError(error.response.data.error || "Server error occurred. Please try again.");
+            } else if (error.request) {
+                // The request was made, but no response was received
+                setError("No response from server. Check your connection.");
+            } else {
+                // Something else happened
+                setError("An unexpected error occurred. Please try again.");
+            }
         }
     };
 
@@ -113,7 +123,7 @@ const EmployerSignUp = () => {
                         className="w-full py-2 my-2 bg-transparent border-b border-black outline-none"
                     >
                         <option value="">Industry</option>
-                        <option value="Tech">Tech</option>
+                        <option value="Tech">Technology</option>
                         <option value="Healthcare">Healthcare</option>
                         <option value="Finance">Finance</option>
                         {/* Add more industries as needed */}
