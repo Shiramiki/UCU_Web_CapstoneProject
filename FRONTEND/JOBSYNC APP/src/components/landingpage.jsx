@@ -14,9 +14,9 @@ const LandingPage = () => {
   return (
     <div>
       {/* Header Section */}
-      <header className="fixed top-0 left-0 w-full flex justify-between items-center p-6 text-white z-20 bg-black bg-opacity-70">
+      <header className="fixed top-0 left-0 w-full flex justify-between items-center p-6 text-black z-20 bg-white bg-opacity-70">
         <div className="text-4xl font-extrabold">
-          <span className="font-serif">JOB SYNC</span>
+          <span className="font-serif" >JOB SYNC</span>
         </div>
         <nav className="space-x-10">
           <Link to="/about" className="font-extrabold text-xl">About</Link>
@@ -40,7 +40,7 @@ const LandingPage = () => {
           <div className="text-center text-white font-extrabold z-20">
             <p className="w-full bg-[#4071ed] h-2 mb-5"></p>
             <p className="text-[40px] pb-10 overflow-auto">
-              It's enough with the job hunt struggles, we're here to help. Land your next role with JobFern!
+            Say goodbye to job hunt frustrations—JobSync is here to connect you with your next opportunity!
             </p>
           </div>
         </div>
