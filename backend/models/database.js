@@ -60,6 +60,29 @@ function createEmployersTable() {
     ) AUTO_INCREMENT=100000;
 `;
 
+var sql = ` 
+CREATE TABLE IF NOT EXISTS job_adverts (
+    id VARCHAR(255) PRIMARY KEY,  -- Using VARCHAR for job advert ID
+    employer_id INT,  -- Foreign key to the employer table (employer_id links to employers.id)
+    company_name VARCHAR(255) NOT NULL,  -- Company name explicitly included for clarity
+    job_title VARCHAR(255) NOT NULL,
+    job_description TEXT NOT NULL,
+    job_type ENUM('Full-time', 'Part-time', 'Internship', 'Freelance', 'Contract') DEFAULT 'Full-time',
+    industry ENUM(
+        'Technology', 'Finance', 'Healthcare', 'Education', 'Retail', 
+        'Manufacturing', 'Construction', 'Transportation', 'Hospitality', 
+        'Media', 'Agriculture', 'Real Estate', 'Telecommunications', 
+        'Government', 'Energy', 'Legal', 'Consulting', 'Nonprofit', 'Other'
+    ) DEFAULT 'Other',
+    location VARCHAR(255) NOT NULL,
+    salary DECIMAL(10, 2) DEFAULT NULL,
+    application_deadline DATE,
+    posted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (employer_id) REFERENCES employers(id) ON DELETE CASCADE  -- Proper foreign key for employer_id
+);
+`;
+
 
         // Execute the query to create the table
         connection.query(sql, function(err, result) {
