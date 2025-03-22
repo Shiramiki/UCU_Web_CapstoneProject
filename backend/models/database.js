@@ -89,4 +89,18 @@ CREATE TABLE IF NOT EXISTS job_adverts (
     });
 }
 
+var sql = ` 
+CREATE TABLE IF NOT EXISTS applicants (
+    job_advert_id VARCHAR(255),  -- Foreign key to the job_adverts table (job advert ID)
+    jobseeker_id INT,  -- Foreign key to the jobseekers table (links to the jobseeker applying)
+    application_status ENUM('Pending', 'Interviewing', 'Employed', 'Accepted', 'Rejected') DEFAULT 'Pending',  -- Status of the application
+    application_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Date the application was made
+    resume_link VARCHAR(255) DEFAULT NULL,  -- Link to the applicant's resume (optional)
+    cover_letter_link VARCHAR(255) DEFAULT NULL,  -- Link to the applicant's cover letter document (optional)
+    PRIMARY KEY (job_advert_id, jobseeker_id),  -- Composite Primary Key using both job_advert_id and jobseeker_id
+    FOREIGN KEY (job_advert_id) REFERENCES job_adverts(id) ON DELETE CASCADE,  -- Foreign key to job_adverts
+    FOREIGN KEY (jobseeker_id) REFERENCES jobseekers(id) ON DELETE CASCADE  -- Foreign key to jobseekers table
+);
+`;
+
 module.exports = { createEmployersTable };
