@@ -96,13 +96,25 @@ const JobSeekerSignUp = () => {
                         className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none"
                     />
                     <input
-                        type="text"
-                        name="phone"
-                        placeholder="Phone Number"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none"
-                    />
+    type="text"
+    name="phone"
+    placeholder="Phone Number"
+    value={formData.phone}
+    onChange={(e) => {
+        const value = e.target.value;
+        // Allow only numbers
+        if (/^\d*$/.test(value)) {
+            // Ensure the number starts with '07' and has at most 10 digits
+            if (value.length <= 10 && (value.startsWith("07") || value === "")) {
+                setFormData({ ...formData, phone: value });
+            }
+        }
+    }}
+    maxLength="10"
+    className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none"
+/>
+
+                    
                     <input
                         type="text"
                         name="address"

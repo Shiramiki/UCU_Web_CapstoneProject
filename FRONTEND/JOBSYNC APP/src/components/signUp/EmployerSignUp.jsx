@@ -92,14 +92,22 @@ const EmployerSignUp = () => {
                         onChange={handleChange}
                         className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none"
                     />
-                    <input
-                        type="text"
-                        name="phone"
-                        placeholder="Phone Number"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none"
-                    />
+                  <input
+    type="text"
+    name="phone"
+    placeholder="Phone Number"
+    value={formData.phone}
+    onChange={(e) => {
+        const value = e.target.value;
+
+        // Allow empty value to enable deletion and retyping
+        if (value === "" || (/^07\d{0,8}$/.test(value) && value.length <= 10)) {
+            setFormData({ ...formData, phone: value });
+        }
+    }}
+    className="w-full text-black py-2 my-2 bg-transparent border-b border-black outline-none"
+/>
+
                     <input
                         type="text"
                         name="address"
