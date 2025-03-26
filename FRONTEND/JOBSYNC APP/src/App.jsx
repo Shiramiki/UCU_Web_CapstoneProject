@@ -9,6 +9,7 @@ import EmployerSignUp from "./components/signUp/EmployerSignUp";
 import JobListings from "./pages/joblistings";
 import JobDetails from "./pages/jobdetails";
 import About from "./pages/about";
+// import EmployerDashboard from "./pages/employerdashboard";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/signup/employer" element={<EmployerSignUp />} /> {/* Employer Sign Up */}
         <Route path="/joblistings" element={<JobListings />} /> {/* Job Listings Page */}
         <Route path="/jobdetails/:jobId" element={<JobDetails />} /> {/* Home/Landing Page */}
+        {/* <Route path="/dashboard" element={<EmployerDashboard/>} /> dashboard */}
       </Routes>
     </Router>
   );

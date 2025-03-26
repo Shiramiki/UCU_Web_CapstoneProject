@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mysql = require("mysql2");
 const cors = require("cors");
-const { createEmployersTable } = require('./models/database'); 
+const { createEmployersTable, createJobSeekersTable, createAdvertsTable } = require('./models/database');
 const jobSeekerRoutes = require("./routes/jobSeekersSignupRoutes");
 const authRoutes = require("./routes/authRoutes");
 const employeerouter = require("./routes/empSignupRoutes");
@@ -34,6 +34,8 @@ const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     createEmployersTable();
+    createJobSeekersTable();
+    createAdvertsTable();
 });
 
 
