@@ -6,6 +6,7 @@ const { createEmployersTable, createJobSeekersTable, createAdvertsTable } = requ
 const jobSeekerRoutes = require("./routes/jobSeekersSignupRoutes");
 const authRoutes = require("./routes/authRoutes");
 const employeerouter = require("./routes/empSignupRoutes");
+const jobRoutes = require('./routes/advertRoutes');
 
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes); // Mount employer routes under /api/auth
 app.use("/api/auth", employeerouter);
 app.use("/api/auth", jobSeekerRoutes);
+app.use(jobRoutes);
 
 const db = require("./config/db");
 
