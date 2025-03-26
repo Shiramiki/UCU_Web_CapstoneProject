@@ -20,6 +20,21 @@ app.use(jobRoutes);
 
 const db = require("./config/db");
 
+app.get('/api/jobs/:id', (req, res) => {
+  const jobId = req.params.id;
+  const query = 'SELECT * FROM job_adverts WHERE id = ?';
+
+  db.query(query, [jobId], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    if (results.length === 0) {
+      return res.status(404).json({ message: 'Job not found' });
+    }
+    res.json(results[0]);
+  });
+});
+
 // API Routes
 app.get("/", (req, res) => {
     res.send("Job Search API is running...");
