@@ -4,6 +4,11 @@ const connection = require('./models/db')
 require('dotenv').config()
 
 
+const auth = require('./routes/loginRoutes')
+const employerRoutes = require('./routes/employerRoutes')
+
+app.use('/',auth)
+app.use('/',employerRoutes)
 
 app.get('/',(req,res)=>{
     res.send('new proj')
