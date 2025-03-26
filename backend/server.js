@@ -3,9 +3,9 @@ const express = require("express");
 const mysql = require("mysql2");
 const cors = require("cors");
 const { createEmployersTable } = require('./models/database'); 
-// const jobSeekerRoutes = require("./routes/jobSeekers");
+const jobSeekerRoutes = require("./routes/jobSeekersSignupRoutes");
 const authRoutes = require("./routes/authRoutes");
-const employeerouter = require("./routes/employers");
+const employeerouter = require("./routes/empSignupRoutes");
 
 
 const app = express();
@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes); // Mount employer routes under /api/auth
 app.use("/api/auth", employeerouter);
-// app.use("/api/jobseekers", jobSeekerRoutes);
+app.use("/api/auth", jobSeekerRoutes);
 
 const db = require("./config/db");
 
