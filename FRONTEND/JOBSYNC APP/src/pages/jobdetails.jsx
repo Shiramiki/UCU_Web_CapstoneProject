@@ -48,6 +48,7 @@ const JobDetails = () => {
       animate={{ opacity: 1, y: 0 }} 
       transition={{ duration: 0.8 }}
     >
+      
       <h2 className="text-3xl font-bold text-center mb-6">{job.job_title}</h2>
       <div className="text-center mb-6">
         <p className="text-xl font-medium">{job.company_name}</p>

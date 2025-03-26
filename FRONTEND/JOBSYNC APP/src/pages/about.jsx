@@ -13,7 +13,7 @@ const AboutPage = () => {
                 </div>
                 <nav className="space-x-10">
                     <Link to="/" className="font-extrabold text-xl">Home</Link>
-                    <Link to="/jobs" className="font-extrabold text-xl">Jobs</Link>
+                    <Link to="/joblistings" className="font-extrabold text-xl">Jobs</Link>
                     <Link to="/signup" className="font-extrabold text-xl">Sign Up</Link>
                     <Link to="/login" className="font-extrabold text-xl">Login</Link>
                 </nav>
