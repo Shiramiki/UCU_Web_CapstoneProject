@@ -59,8 +59,30 @@ const JobSeekerSignUp = () => {
                 confirmPassword: "",
             });
         } catch (error) {
-            setError("Error occurred during registration.");
+            // If error is a network or connection issue
+            if (!error.response) {
+                setError("Network error: Could not connect to the server.");
+                return;
+            }
+        
+            // If there is a response from the server, check the status code
+            const { response } = error;
+            
+            if (response.status === 400) {
+                // This could happen if the user provided invalid or incomplete data
+                setError(response.data.message || "Invalid input data. Please check your details.");
+            } else if (response.status === 409) {
+                // 409 Conflict: This error usually happens if there is a conflict, such as trying to register an email that already exists.
+                setError("This email is already in use. Please choose a different one.");
+            } else if (response.status === 500) {
+                // Internal server error, something went wrong on the server side
+                setError("Server error. Please try again later.");
+            } else {
+                // For other status codes or unhandled scenarios
+                setError(`Error: ${response.status} - ${response.data.message || "Unknown error during signup."}`);
+            }
         }
+        
     };
 
     return (

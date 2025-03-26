@@ -47,6 +47,8 @@ const EmployerSignUp = () => {
                 password: "",
                 confirmPassword: "",
             });
+            alert("Employer registered successfully!");
+
         } catch (error) {
             console.error("Registration Error:", error);
             if (error.response) {
